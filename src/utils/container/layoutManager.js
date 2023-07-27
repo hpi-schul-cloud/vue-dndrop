@@ -48,7 +48,8 @@ export default function layoutManager (containerElement, orientation, _animation
   const map = orientation === 'horizontal' ? horizontalMap : verticalMap;
   const propMapper = orientationDependentProps(map);
   const values = {
-    translation: 0
+    translation: 0,
+    lastVisibleRect: {},
   };
   window.addEventListener('resize', function () {
     invalidateContainerRectangles(containerElement);

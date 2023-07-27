@@ -1,7 +1,7 @@
 import * as constants from './constants';
 import { defaultOptions } from './defaults';
-import dragScroller from './scroller';
 import './polyfills';
+import dragScroller from './scroller';
 import { addCursorStyleToBody, addStyleToHead, removeStyle } from './styles';
 import * as Utils from './utils';
 const grabEvents = ['mousedown', 'touchstart'];

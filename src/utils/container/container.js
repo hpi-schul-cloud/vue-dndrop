@@ -2,6 +2,7 @@ import {
   animationClass,
   containerClass,
   containerInstance,
+  dropPlaceholderDefaultClass,
   dropPlaceholderFlexContainerClass,
   dropPlaceholderInnerClass,
   dropPlaceholderWrapperClass,
@@ -9,7 +10,6 @@ import {
   stretcherElementInstance,
   translationValue,
   wrapperClass,
-  dropPlaceholderDefaultClass,
 } from './constants';
 import { defaultOptions } from './defaults';
 import { domDropHandler } from './dropHandlers';
@@ -845,7 +845,7 @@ function Container (element) {
       }
     }
 
-    function prepareDrag (container, relevantContainers) {
+    function prepareDrag (container) {
       const element = container.element;
       const draggables = props.draggables;
       setDraggables(draggables, element);

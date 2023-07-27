@@ -73,12 +73,7 @@ export const isScrolling = (element, axis) => {
   return general || dimensionScroll;
 };
 export const isScrollingOrHidden = (element, axis) => {
-  const style = window.getComputedStyle(element);
-  const overflow = style.overflow;
-  const overFlowAxis = style[`overflow-${axis}`];
-  const general = overflow === 'auto' || overflow === 'scroll' || overflow === 'hidden';
-  const dimensionScroll = overFlowAxis === 'auto' || overFlowAxis === 'scroll' || overFlowAxis === 'hidden';
-  return general || dimensionScroll;
+  return false;
 };
 export const hasBiggerChild = (element, axis) => {
   if (axis === 'x') {
@@ -86,9 +81,6 @@ export const hasBiggerChild = (element, axis) => {
   } else {
     return element.scrollHeight > element.clientHeight;
   }
-};
-export const hasScrollBar = (element, axis) => {
-  return hasBiggerChild(element, axis) && isScrolling(element, axis);
 };
 export const getVisibleRect = (element, elementRect) => {
   let currentElement = element;
@@ -238,15 +230,15 @@ export const isMobile = () => {
 };
 export const clearSelection = () => {
   if (window.getSelection) {
-    // @ts-ignore: Object is possibly 'null'.
+// @ts-ignore: Object is possibly 'null'.
     if (window.getSelection().empty) {
       // Chrome
-      // @ts-ignore: Object is possibly 'null'.
+// @ts-ignore: Object is possibly 'null'.
       window.getSelection().empty();
-      // @ts-ignore: Object is possibly 'null'.
+// @ts-ignore: Object is possibly 'null'.
     } else if (window.getSelection().removeAllRanges) {
       // Firefox
-      // @ts-ignore: Object is possibly 'null'.
+// @ts-ignore: Object is possibly 'null'.
       window.getSelection().removeAllRanges();
     }
   } else if (window.document.selection) {
@@ -275,6 +267,9 @@ export const getDistanceToParent = (parent, child) => {
   }
   return null;
 };
-export function isVisible (rect) {
+export function isVisible(rect) {
+  if (rect === undefined) {
+    return false;
+  }
   return !(rect.bottom <= rect.top || rect.right <= rect.left);
 }
